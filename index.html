@@ -1,0 +1,25 @@
+<html>
+<head>
+<script src="./randexp.js" type="text/javascript"></script>
+</head>
+<body>
+	<label>Password:</label><br />
+    <div id="textarea"></div>
+	<div>
+    <button type="button" onclick="generate()">Generate</button>
+	</div>
+	<script>
+    function generate() {
+        var randexp = new RandExp(/^(?=^.{7,20}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/);
+        randexp.min = 7;                              
+        randexp.max = 20;
+        var randstr = "";
+        for (let i = 0; i < 20; i++) {
+            randstr += i + 1 + ') ' + randexp.gen() + "</br>";
+        }
+        document.getElementById("textarea").innerHTML  = randstr;
+    }
+
+</script>
+</body>
+</html>
